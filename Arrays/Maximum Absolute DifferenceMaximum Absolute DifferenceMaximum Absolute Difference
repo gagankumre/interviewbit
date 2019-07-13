@@ -1,0 +1,19 @@
+int Solution::maxArr(vector<int> &A) {
+    int n = A.size();
+    int Arr1[n],Arr2[n];
+    int maxx=0,p=n,q=0;
+    for(int i=0;i<n;i++){
+        Arr1[i]=A[i]+i;
+        Arr2[i]=A[i]-i;    
+    }
+    sort(Arr1,Arr1+n);
+    sort(Arr2,Arr2+n);
+    int a1=Arr1[0];
+    int b1=Arr1[n-1];
+    int a2=Arr2[0];
+    int b2=Arr2[n-1];
+    // cout<<a<<" "<<b<<" \n";
+    maxx= abs(b1-a1);
+    maxx=  max(maxx,abs(b2-a2));
+    return maxx;
+}
