@@ -1,0 +1,44 @@
+vector<int> Solution::flip(string A) {
+    vector<int> R;
+    int n= A.size();
+    vector<int> V;
+    for(int i=0;i<n;i++){
+        if(A[i]=='1'){
+            V.push_back(-1);
+        }else{
+            V.push_back(1);
+        }
+    }
+    int temp=V[0];
+    int maxx=V[0];
+    int s=0,start=0;
+    int e=0,end=0;
+    for(int i=1;i<n;i++){
+        
+        if(V[i]>temp+V[i]){
+            temp=V[i];
+            s=i;
+            e=i;
+        }else{
+            temp+=V[i];
+            e=i;
+        }
+        
+        if(temp>maxx){
+            maxx=temp;
+            start=s;
+            end=e;
+        }
+        
+        // temp =max(V[i],temp+V[i]);
+        // maxx =max(temp,maxx);
+    }
+    // cout<<maxx<<"\n";
+    // cout<<start+1<<" "<<end+1;
+    if(maxx==-1){
+        return R;
+    }
+    R.push_back(start+1);
+    R.push_back(end+1);
+    return R;
+}
