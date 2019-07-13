@@ -1,0 +1,25 @@
+vector<int> Solution::repeatedNumber(const vector<int> &A) {
+    long long n = A.size();
+    long long a,b;
+    long long sum=0,square=0;
+    long long p,q;
+    vector<int>  R;
+    
+    for(long long i=0;i<n;i++){
+        sum+=(long long)A[i];
+        square+=(long long) A[i]*A[i];
+        
+    }
+    p= (long long)((n*(n+1))/2) - sum;
+    q= (long long)((n*(n+1)*((2*n)+1)/6)-square)/p;
+    
+    a=(p+q)/2;
+    b=(q-p)/2;
+    
+    R.push_back(b);
+    R.push_back(a);
+    
+    return  R;
+    
+    
+}
